@@ -16,9 +16,9 @@ public class ArchiveDocServiceImpl implements ArchiveDocService
 	ArchiveDocRepo archiveDocRepo;
 
 	@Override
-	public List<ArchiveDocProperties> fulltext()
+	public List<ArchiveDocProperties> fulltext(String word)
 	{
-		List<ArchiveDoc> archiveDocsList = archiveDocRepo.fulltext();
+		List<ArchiveDoc> archiveDocsList = archiveDocRepo.fulltext(word);
 		List<ArchiveDocProperties> archiveDocPropertiesList = new ArrayList<ArchiveDocProperties>();
 
 		for(ArchiveDoc archiveDoc : archiveDocsList)
@@ -30,17 +30,5 @@ public class ArchiveDocServiceImpl implements ArchiveDocService
 		}
 
 		return archiveDocPropertiesList;
-	}
-
-	@Override
-	public List<String> fulltextName()
-	{
-		return archiveDocRepo.fulltextName();
-	}
-
-	@Override
-	public String[][] fulltextNameAndType()
-	{
-		return archiveDocRepo.fulltextNameAndType();
 	}
 }

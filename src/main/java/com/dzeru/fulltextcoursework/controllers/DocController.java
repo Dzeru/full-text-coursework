@@ -4,6 +4,7 @@ import com.dzeru.fulltextcoursework.dto.ArchiveDocProperties;
 import com.dzeru.fulltextcoursework.services.ArchiveDocServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,26 +17,10 @@ public class DocController
 	ArchiveDocServiceImpl archiveDocService;
 
 	@RequestMapping("/fulltext")
-	public List<ArchiveDocProperties> fulltext()
+	public List<ArchiveDocProperties> fulltext(@RequestParam(value="word") String word)
 	{
-		List<ArchiveDocProperties> docs = archiveDocService.fulltext();
+		List<ArchiveDocProperties> docs = archiveDocService.fulltext(word);
 
 		return docs;
 	}
-
-	/*@RequestMapping("/fulltextname")
-	public List<String> fulltextname()
-	{
-		List<String> docs = archiveDocRepo.fulltextName();
-
-		return docs;
-	}
-
-	@RequestMapping("/fulltextnameandtype")
-	public String[][] fulltextnameandtype()
-	{
-		String[][] docs = archiveDocRepo.fulltextNameAndType();
-
-		return docs;
-	}*/
 }
