@@ -9,5 +9,5 @@ public interface ArchiveDocService
 	List<ArchiveDocProperties> fulltextContains(String word);
 	List<ArchiveDocProperties> fulltextFreeText(String word);
 	List<ArchiveDocProperties> fulltextContainsPrefix(String word);
-	List<ArchiveDocProperties> fulltextContainsNear(String word, String near);
+	List<ArchiveDocProperties> fulltextContainsNear(String word, String near, Integer dist);
 }

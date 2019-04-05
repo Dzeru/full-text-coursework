@@ -55,9 +55,9 @@ public class ArchiveDocServiceImpl implements ArchiveDocService
 	}
 
 	@Override
-	public List<ArchiveDocProperties> fulltextContainsNear(String word, String near)
+	public List<ArchiveDocProperties> fulltextContainsNear(String word, String near, Integer dist)
 	{
-		List<ArchiveDoc> archiveDocList = archiveDocRepo.fulltextContainsNear(word, near);
+		List<ArchiveDoc> archiveDocList = archiveDocRepo.fulltextContainsNear(word, near, dist);
 		List<ArchiveDocProperties> archiveDocPropertiesList = convertADListToADPList(archiveDocList);
 		return archiveDocPropertiesList;
 	}

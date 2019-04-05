@@ -21,10 +21,10 @@ public class AdditionalArchiveDocRepoImpl implements AdditionalArchiveDocRepo
 	}
 
 	@Override
-	public List<ArchiveDoc> fulltextContainsNear(String word, String near)
+	public List<ArchiveDoc> fulltextContainsNear(String word, String near, Integer dist)
 	{
 		String queryString = "select * from dbo.archive_docs where contains(archive_doc," +
-				"'near((" + word + ", " + near + "), 3)')";
+				"'near((" + word + ", " + near + "), " + dist + ")')";
 		Query fulltextQuery = entityManager.createNativeQuery(queryString, ArchiveDoc.class);
 		return fulltextQuery.getResultList();
 	}

@@ -7,5 +7,5 @@ import java.util.List;
 public interface AdditionalArchiveDocRepo
 {
 	List<ArchiveDoc> fulltextContainsPrefix(String word);
-	List<ArchiveDoc> fulltextContainsNear(String word, String near);
+	List<ArchiveDoc> fulltextContainsNear(String word, String near, Integer dist);
 }

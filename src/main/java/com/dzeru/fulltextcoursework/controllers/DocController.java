@@ -41,9 +41,11 @@ public class DocController
 	}
 
 	@RequestMapping("/containsnear")
-	public List<ArchiveDocProperties> fulltextContainsNear(@RequestParam(value="word") String word, @RequestParam(value="near") String near)
+	public List<ArchiveDocProperties> fulltextContainsNear(@RequestParam(value="word") String word,
+	                                                       @RequestParam(value="near") String near,
+	                                                       @RequestParam(value="") Integer dist)
 	{
-		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsNear(word, near);
+		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsNear(word, near, dist);
 
 		return docs;
 	}
