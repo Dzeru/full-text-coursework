@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface ArchiveDocService
 {
-	List<ArchiveDocProperties> fulltext(String word);
+	List<ArchiveDocProperties> fulltextContains(String word);
+	List<ArchiveDocProperties> fulltextFreeText(String word);
+	List<ArchiveDocProperties> fulltextContainsPrefix(String word);
+	List<ArchiveDocProperties> fulltextContainsNear(String word, String near);
 }

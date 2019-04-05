@@ -15,20 +15,50 @@ public class ArchiveDocServiceImpl implements ArchiveDocService
 	@Autowired
 	ArchiveDocRepo archiveDocRepo;
 
-	@Override
-	public List<ArchiveDocProperties> fulltext(String word)
+	private List<ArchiveDocProperties> convertADListToADPList(List<ArchiveDoc> archiveDocList)
 	{
-		List<ArchiveDoc> archiveDocsList = archiveDocRepo.fulltext(word);
 		List<ArchiveDocProperties> archiveDocPropertiesList = new ArrayList<ArchiveDocProperties>();
 
-		for(ArchiveDoc archiveDoc : archiveDocsList)
+		for(ArchiveDoc archiveDoc : archiveDocList)
 		{
 			ArchiveDocProperties archiveDocProperties = new ArchiveDocProperties(archiveDoc.getDocId(),
 					archiveDoc.getDocName(), archiveDoc.getTypeOfDoc());
 			archiveDocPropertiesList.add(archiveDocProperties);
 
 		}
+		
+		return archiveDocPropertiesList;
+	}
 
+	@Override
+	public List<ArchiveDocProperties> fulltextContains(String word)
+	{
+		List<ArchiveDoc> archiveDocList = archiveDocRepo.fulltextContains(word);
+		List<ArchiveDocProperties> archiveDocPropertiesList = convertADListToADPList(archiveDocList);
+		return archiveDocPropertiesList;
+	}
+
+	@Override
+	public List<ArchiveDocProperties> fulltextFreeText(String word)
+	{
+		List<ArchiveDoc> archiveDocList = archiveDocRepo.fulltextFreeText(word);
+		List<ArchiveDocProperties> archiveDocPropertiesList = convertADListToADPList(archiveDocList);
+		return archiveDocPropertiesList;
+	}
+
+	@Override
+	public List<ArchiveDocProperties> fulltextContainsPrefix(String word)
+	{
+		List<ArchiveDoc> archiveDocList = archiveDocRepo.fulltextContainsPrefix(word);
+		List<ArchiveDocProperties> archiveDocPropertiesList = convertADListToADPList(archiveDocList);
+		return archiveDocPropertiesList;
+	}
+
+	@Override
+	public List<ArchiveDocProperties> fulltextContainsNear(String word, String near)
+	{
+		List<ArchiveDoc> archiveDocList = archiveDocRepo.fulltextContainsNear(word, near);
+		List<ArchiveDocProperties> archiveDocPropertiesList = convertADListToADPList(archiveDocList);
 		return archiveDocPropertiesList;
 	}
 }

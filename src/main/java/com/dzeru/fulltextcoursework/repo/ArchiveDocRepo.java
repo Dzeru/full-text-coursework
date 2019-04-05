@@ -9,8 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ArchiveDocRepo extends JpaRepository<ArchiveDoc, Long>
+public interface ArchiveDocRepo extends JpaRepository<ArchiveDoc, Long>, AdditionalArchiveDocRepo
 {
 	@Query(value = "select * from dbo.archive_docs where contains (archive_doc, :word)", nativeQuery = true)
-	List<ArchiveDoc> fulltext(@Param("word") String word);
+	List<ArchiveDoc> fulltextContains(@Param("word") String word);
+
+	@Query(value = "select * from dbo.archive_docs where freetext(archive_doc, :word)", nativeQuery = true)
+	List<ArchiveDoc> fulltextFreeText(@Param("word") String word);
 }

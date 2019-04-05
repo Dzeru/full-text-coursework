@@ -16,10 +16,34 @@ public class DocController
 	@Autowired
 	ArchiveDocServiceImpl archiveDocService;
 
-	@RequestMapping("/fulltext")
-	public List<ArchiveDocProperties> fulltext(@RequestParam(value="word") String word)
+	@RequestMapping("/contains")
+	public List<ArchiveDocProperties> fulltextContains(@RequestParam(value="word") String word)
 	{
-		List<ArchiveDocProperties> docs = archiveDocService.fulltext(word);
+		List<ArchiveDocProperties> docs = archiveDocService.fulltextContains(word);
+
+		return docs;
+	}
+
+	@RequestMapping("/freetext")
+	public List<ArchiveDocProperties> fulltextFreeText(@RequestParam(value="word") String word)
+	{
+		List<ArchiveDocProperties> docs = archiveDocService.fulltextFreeText(word);
+
+		return docs;
+	}
+
+	@RequestMapping("/containsprefix")
+	public List<ArchiveDocProperties> fulltextContainsPrefix(@RequestParam(value="word") String word)
+	{
+		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsPrefix(word);
+
+		return docs;
+	}
+
+	@RequestMapping("/containsnear")
+	public List<ArchiveDocProperties> fulltextContainsNear(@RequestParam(value="word") String word, @RequestParam(value="near") String near)
+	{
+		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsNear(word, near);
 
 		return docs;
 	}
