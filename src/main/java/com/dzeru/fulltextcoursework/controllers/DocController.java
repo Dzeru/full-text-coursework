@@ -28,7 +28,6 @@ public class DocController
 	public List<ArchiveDocProperties> fulltextFreeText(@RequestParam(value="word") String word)
 	{
 		List<ArchiveDocProperties> docs = archiveDocService.fulltextFreeText(word);
-
 		return docs;
 	}
 
@@ -36,7 +35,13 @@ public class DocController
 	public List<ArchiveDocProperties> fulltextContainsPrefix(@RequestParam(value="word") String word)
 	{
 		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsPrefix(word);
+		return docs;
+	}
 
+	@RequestMapping("/containsformsof")
+	public List<ArchiveDocProperties> fulltextContainsFormsOf(@RequestParam(value="word") String word)
+	{
+		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsFormsOf(word);
 		return docs;
 	}
 
@@ -46,7 +51,17 @@ public class DocController
 	                                                       @RequestParam(value="") Integer dist)
 	{
 		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsNear(word, near, dist);
+		return docs;
+	}
 
+	@RequestMapping("/containstableweight")
+	public List<ArchiveDocProperties> fulltextContainsTableWeight(@RequestParam(value="list") String wordsAndWeights,
+	                                                              @RequestParam(value="listsep") String listSeparator,
+	                                                              @RequestParam(value="pairsep") String pairSeparator)
+	{
+		List<ArchiveDocProperties> docs = archiveDocService.fulltextContainsTableWeight(wordsAndWeights,
+																						 listSeparator,
+																						 pairSeparator);
 		return docs;
 	}
 }

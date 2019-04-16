@@ -1,11 +1,12 @@
 package com.dzeru.fulltextcoursework.repo;
 
-import com.dzeru.fulltextcoursework.entities.ArchiveDoc;
-
 import java.util.List;
+import java.util.Map;
 
-public interface AdditionalArchiveDocRepo
+public interface AdditionalArchiveDocRepo<T, I>
 {
-	List<ArchiveDoc> fulltextContainsPrefix(String word);
-	List<ArchiveDoc> fulltextContainsNear(String word, String near, Integer dist);
+	List<T> fulltextContainsPrefix(String word);
+	List<T> fulltextContainsFormsOf(String word);
+	List<T> fulltextContainsNear(String word, String near, Integer dist);
+	List<T> fulltextContainsTableWeight(Map<String, Double> wordsAndWeights);
 }
