@@ -11,9 +11,11 @@ import java.util.List;
 @Repository
 public interface ArchiveDocRepo extends JpaRepository<ArchiveDoc, Long>, AdditionalArchiveDocRepo<ArchiveDoc, Long>
 {
+	//Одно или несколько конкретных слов или фраз (простое выражение)
 	@Query(value = "select * from dbo.archive_docs where contains (archive_doc, :word)", nativeQuery = true)
 	List<ArchiveDoc> fulltextContains(@Param("word") String word);
 
+	//Синонимические формы конкретного слова (тезаурус)
 	@Query(value = "select * from dbo.archive_docs where freetext (archive_doc, :word)", nativeQuery = true)
 	List<ArchiveDoc> fulltextFreeText(@Param("word") String word);
 }

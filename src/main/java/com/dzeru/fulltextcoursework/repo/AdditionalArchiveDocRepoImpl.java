@@ -13,6 +13,7 @@ public class AdditionalArchiveDocRepoImpl implements AdditionalArchiveDocRepo<Ar
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	//Слова, начинающиеся заданным текстом, или фразы с такими словами (префиксные выражения)
 	@Override
 	public List<ArchiveDoc> fulltextContainsPrefix(String word)
 	{
@@ -21,6 +22,7 @@ public class AdditionalArchiveDocRepoImpl implements AdditionalArchiveDocRepo<Ar
 		return fulltextQuery.getResultList();
 	}
 
+	//Словоформы конкретного слова (производное выражение)
 	@Override
 	public List<ArchiveDoc> fulltextContainsFormsOf(String word)
 	{
@@ -30,6 +32,7 @@ public class AdditionalArchiveDocRepoImpl implements AdditionalArchiveDocRepo<Ar
 		return fulltextQuery.getResultList();
 	}
 
+	//Слова или фразы, находящиеся рядом с другими словами или фразами (выражения с учетом расположения)
 	@Override
 	public List<ArchiveDoc> fulltextContainsNear(String word, String near, Integer dist)
 	{
@@ -39,6 +42,7 @@ public class AdditionalArchiveDocRepoImpl implements AdditionalArchiveDocRepo<Ar
 		return fulltextQuery.getResultList();
 	}
 
+	//Слова или фразы со взвешенными значениями (взвешенное выражение)
 	@Override
 	public List<ArchiveDoc> fulltextContainsTableWeight(Map<String, Double> wordsAndWeights)
 	{
@@ -52,7 +56,7 @@ public class AdditionalArchiveDocRepoImpl implements AdditionalArchiveDocRepo<Ar
 			sb.append(wordAndWeight.getKey() + " weight(" + wordAndWeight.getValue() + "), ");
 		}
 
-		sb.delete(sb.lastIndexOf(", "), sb.capacity()); //Delete comma and space for the last entry
+		sb.delete(sb.lastIndexOf(", "), sb.capacity()); //Удаляем пробел и запятую у последнего вхождения
 		sb.append(")') as key_tbl on ad_tbl.doc_id = key_tbl.[key] order by key_tbl.rank desc");
 
 		String queryString = sb.toString();
