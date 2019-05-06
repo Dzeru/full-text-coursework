@@ -1,19 +1,21 @@
 package com.dzeru.fulltextcoursework.repo;
 
+import com.dzeru.fulltextcoursework.entities.ArchivedDocument;
+
 import java.util.List;
 import java.util.Map;
 
-public interface AdditionalArchiveDocRepo<T, I>
+public interface AdditionalArchivedDocumentRepository
 {
 	//Слова, начинающиеся заданным текстом, или фразы с такими словами (префиксные выражения)
-	List<T> fulltextContainsPrefix(String word);
+	List<ArchivedDocument> fulltextContainsPrefix(String word);
 
 	//Словоформы конкретного слова (производное выражение)
-	List<T> fulltextContainsFormsOf(String word);
+	List<ArchivedDocument> fulltextContainsFormsOf(String word);
 
 	//Слова или фразы, находящиеся рядом с другими словами или фразами (выражения с учетом расположения)
-	List<T> fulltextContainsNear(String word, String near, Integer dist);
+	List<ArchivedDocument> fulltextContainsNear(String word, String near, Integer dist);
 
 	//Слова или фразы со взвешенными значениями (взвешенное выражение)
-	List<T> fulltextContainsTableWeight(Map<String, Double> wordsAndWeights);
+	List<ArchivedDocument> fulltextContainsTableWeight(Map<String, Double> wordsAndWeights);
 }
