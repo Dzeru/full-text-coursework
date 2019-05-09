@@ -1,10 +1,9 @@
-package com.dzeru.fulltextcoursework.repo;
+package com.dzeru.fulltextcoursework.repositories;
 
 import com.dzeru.fulltextcoursework.entities.ArchivedDocument;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 import java.util.Map;
 

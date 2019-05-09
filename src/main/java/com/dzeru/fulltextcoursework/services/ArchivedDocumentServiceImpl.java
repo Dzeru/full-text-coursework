@@ -2,13 +2,12 @@ package com.dzeru.fulltextcoursework.services;
 
 import com.dzeru.fulltextcoursework.dto.ArchivedDocumentProperties;
 import com.dzeru.fulltextcoursework.entities.ArchivedDocument;
-import com.dzeru.fulltextcoursework.repo.ArchivedDocumentRepository;
+import com.dzeru.fulltextcoursework.repositories.ArchivedDocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

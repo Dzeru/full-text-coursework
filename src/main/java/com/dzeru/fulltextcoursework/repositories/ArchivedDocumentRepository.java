@@ -1,4 +1,4 @@
-package com.dzeru.fulltextcoursework.repo;
+package com.dzeru.fulltextcoursework.repositories;
 
 import com.dzeru.fulltextcoursework.entities.ArchivedDocument;
 import org.springframework.data.jpa.repository.JpaRepository;
