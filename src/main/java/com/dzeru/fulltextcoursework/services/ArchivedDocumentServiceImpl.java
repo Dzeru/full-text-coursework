@@ -24,8 +24,7 @@ public class ArchivedDocumentServiceImpl implements ArchivedDocumentService
 	public List<ArchivedDocumentProperties> fulltextContains(String word)
 	{
 		List<ArchivedDocument> archivedDocumentList = archivedDocumentRepository.fulltextContains(word);
-		List<ArchivedDocumentProperties> archivedDocumentPropertiesList = convertADListToADPList(archivedDocumentList);
-		return archivedDocumentPropertiesList;
+		return convertADListToADPList(archivedDocumentList);
 	}
 
 	@Override
@@ -33,8 +32,7 @@ public class ArchivedDocumentServiceImpl implements ArchivedDocumentService
 	public List<ArchivedDocumentProperties> fulltextFreeText(String word)
 	{
 		List<ArchivedDocument> archivedDocumentList = archivedDocumentRepository.fulltextFreeText(word);
-		List<ArchivedDocumentProperties> archivedDocumentPropertiesList = convertADListToADPList(archivedDocumentList);
-		return archivedDocumentPropertiesList;
+		return convertADListToADPList(archivedDocumentList);
 	}
 
 	@Override
@@ -42,8 +40,7 @@ public class ArchivedDocumentServiceImpl implements ArchivedDocumentService
 	public List<ArchivedDocumentProperties> fulltextContainsPrefix(String word)
 	{
 		List<ArchivedDocument> archivedDocumentList = archivedDocumentRepository.fulltextContainsPrefix(word);
-		List<ArchivedDocumentProperties> archivedDocumentPropertiesList = convertADListToADPList(archivedDocumentList);
-		return archivedDocumentPropertiesList;
+		return convertADListToADPList(archivedDocumentList);
 	}
 
 	@Override
@@ -51,8 +48,7 @@ public class ArchivedDocumentServiceImpl implements ArchivedDocumentService
 	public List<ArchivedDocumentProperties> fulltextContainsFormsOf(String word)
 	{
 		List<ArchivedDocument> archivedDocumentList = archivedDocumentRepository.fulltextContainsFormsOf(word);
-		List<ArchivedDocumentProperties> archivedDocumentPropertiesList = convertADListToADPList(archivedDocumentList);
-		return archivedDocumentPropertiesList;
+		return convertADListToADPList(archivedDocumentList);
 	}
 
 	@Override
@@ -63,8 +59,7 @@ public class ArchivedDocumentServiceImpl implements ArchivedDocumentService
 	{
 		Map<String, Double> wordsAndWeights = convertWWListToMap(list, listSeparator, pairSeparator);
 		List<ArchivedDocument> archivedDocumentList = archivedDocumentRepository.fulltextContainsTableWeight(wordsAndWeights);
-		List<ArchivedDocumentProperties> archivedDocumentPropertiesList = convertADListToADPList(archivedDocumentList);
-		return archivedDocumentPropertiesList;
+		return convertADListToADPList(archivedDocumentList);
 	}
 
 	@Override
@@ -72,8 +67,7 @@ public class ArchivedDocumentServiceImpl implements ArchivedDocumentService
 	public List<ArchivedDocumentProperties> fulltextContainsNear(String word, String near, Integer dist)
 	{
 		List<ArchivedDocument> archivedDocumentList = archivedDocumentRepository.fulltextContainsNear(word, near, dist);
-		List<ArchivedDocumentProperties> archivedDocumentPropertiesList = convertADListToADPList(archivedDocumentList);
-		return archivedDocumentPropertiesList;
+		return convertADListToADPList(archivedDocumentList);
 	}
 
 	private List<ArchivedDocumentProperties> convertADListToADPList(List<ArchivedDocument> archivedDocumentList)
@@ -85,7 +79,6 @@ public class ArchivedDocumentServiceImpl implements ArchivedDocumentService
 			ArchivedDocumentProperties archivedDocumentProperties = new ArchivedDocumentProperties(archivedDocument.getDocId(),
 					archivedDocument.getName(), archivedDocument.getExtension());
 			archivedDocumentPropertiesList.add(archivedDocumentProperties);
-
 		}
 
 		return archivedDocumentPropertiesList;

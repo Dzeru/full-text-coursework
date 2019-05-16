@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ArchivedDocumentRepository extends JpaRepository<ArchivedDocument, Long>, AdditionalArchivedDocumentRepository
+public interface ArchivedDocumentRepository extends JpaRepository<ArchivedDocument, Long>,
+		                                            AdditionalArchivedDocumentRepository
 {
 	//Одно или несколько конкретных слов или фраз (простое выражение)
 	@Query(value = "select * from dbo.archived_documents where contains (content, :word)", nativeQuery = true)

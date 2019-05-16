@@ -11,5 +11,7 @@ public interface ArchivedDocumentService
 	List<ArchivedDocumentProperties> fulltextContainsPrefix(String word);
 	List<ArchivedDocumentProperties> fulltextContainsFormsOf(String word);
 	List<ArchivedDocumentProperties> fulltextContainsNear(String word, String near, Integer dist);
-	List<ArchivedDocumentProperties> fulltextContainsTableWeight(String list, String listSeparator, String pairSeparator);
+	List<ArchivedDocumentProperties> fulltextContainsTableWeight(String list,
+	                                                             String listSeparator,
+	                                                             String pairSeparator);
 }

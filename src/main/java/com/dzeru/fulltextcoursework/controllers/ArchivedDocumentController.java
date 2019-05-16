@@ -50,7 +50,7 @@ public class ArchivedDocumentController
 	@RequestMapping("/containsnear")
 	public List<ArchivedDocumentProperties> fulltextContainsNear(@RequestParam(value="word") @NotBlank String word,
 	                                                             @RequestParam(value="near") @NotBlank String near,
-	                                                             @RequestParam(value="") @Positive Integer dist)
+	                                                             @RequestParam(value="dist") @Positive Integer dist)
 	{
 		return archiveDocService.fulltextContainsNear(word, near, dist);
 	}
